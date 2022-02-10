@@ -3,6 +3,8 @@ const Express = require('express')
 const app = Express()
 const dbConnection = require("./db")
 
+app.use(Express.json())
+
 const controllers = require("./controllers");
 
 app.use("/property", controllers.propController)

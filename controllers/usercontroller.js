@@ -1,12 +1,15 @@
-const Express = require('express');
-const router = Express.Router();
+const router = require('express').Router();
+const { UserModel } = require("../models")
 
-router.get('/practice', (req, res) => {
-    res.send('Hey, have a drink!')
-});
+router.post("/register", async (req, res) => {
 
-router.post("/user")
+    const { firstName, lastName, email, password } = req.body;
 
-router.post("/user/create")
-
-module.exports = router;
+    await UserModel.create({
+        firstName: "test",
+        lastName: "testerson",
+        email: "test@test.com",
+        password: "testingme"
+    });
+    res.send("This is our user/register endpoint!")
+})
