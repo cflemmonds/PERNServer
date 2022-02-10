@@ -13,3 +13,5 @@ router.post("/register", async (req, res) => {
     });
     res.send("This is our user/register endpoint!")
 })
+
+module.exports = router;
