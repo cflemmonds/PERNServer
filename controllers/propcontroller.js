@@ -5,8 +5,8 @@ router.get('/practice', (req, res) => {
     res.send('Hey, have a drink!')
 });
 
-router.post("/prop")
+// router.post("/prop")
 
-router.post("/prop/create")
+// router.post("/prop/create")
 
 module.exports = router;
