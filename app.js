@@ -8,11 +8,7 @@ const dbConnection = require("./db")
 
 const controllers = require("./controllers");
 
-app.use("/prop", controllers.propController)
-
-app.listen(4000, () => {
-    console.log(`[Server]: App is listening on 4000.`)
-})
+app.use("/property", controllers.propController)
 
 dbConnection.authenticate()
     .then(() => dbConnection.sync())
