@@ -1,5 +1,4 @@
 const { DataTypes } = require("sequelize");
-const { unique } = require("underscore");
 const db = require("../db");
 
 const User = db.define("user", {

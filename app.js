@@ -2,9 +2,7 @@ const Express = require('express')
 const app = Express()
 const dbConnection = require("./db")
 
-// app.use('/test', (req, res) => {
-//     res.send('This is message from the test endpoint on the server!')
-// })
+app.use(Express.json())
 
 const controllers = require("./controllers");
 
