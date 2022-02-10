@@ -8,7 +8,7 @@ router.post("/register", async (req, res) => {
     await UserModel.create({
         firstName: "test",
         lastName: "testerson",
-        email: "test@test.com",
+        email: "test@testagain.com",
         password: "testingme"
     });
     res.send("This is our user/register endpoint!")
