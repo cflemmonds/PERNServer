@@ -1,3 +1,7 @@
-const UserModel = require('./user')
+const UserModel = require("./user")
+const PropertyModel = require("./property")
 
-module.exports = {UserModel};
+module.exports = {
+    UserModel,
+    PropertyModel
+}
