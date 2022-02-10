@@ -6,8 +6,7 @@ app.use(Express.json())
 
 const controllers = require("./controllers");
 
-app.use("/prop", controllers.propController)
-app.use("/user", controllers.userController)
+app.use("/property", controllers.propController)
 
 dbConnection.authenticate()
     .then(() => dbConnection.sync())
