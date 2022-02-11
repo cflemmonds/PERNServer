@@ -6,7 +6,7 @@ const dbConnection = require("./db")
 app.use(Express.json())
 
 const controllers = require("./controllers");
-
+app.use(require("./middleware/headers"));
 app.use("/property", controllers.propertyController)
 app.use("/user", controllers.userController)
 
