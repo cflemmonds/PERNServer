@@ -9,10 +9,7 @@ app.use(Express.json())
 const controllers = require("./controllers");
 
 app.use("/property", controllers.propertyController)
-<<<<<<< HEAD
 app.use("/user", controllers.userController)
-=======
->>>>>>> brad
 
 dbConnection.authenticate()
     .then(() => dbConnection.sync())
