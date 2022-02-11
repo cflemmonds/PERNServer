@@ -2,6 +2,10 @@ const { DataTypes } = require("sequelize");
 const db = require("../db");
 
 const UserModel = db.define("user", {
+/*     ownerId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }, */
     firstName: {
         type: DataTypes.STRING(1000),
         allowNull: false
@@ -16,7 +20,7 @@ const UserModel = db.define("user", {
         unique: true
     },
     password: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: false
     }
 })
