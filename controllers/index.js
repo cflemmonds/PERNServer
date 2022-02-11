@@ -1,4 +1,4 @@
 module.exports = {
-    propertyController: require("./propertycontroller"),
-    userController: require("./usercontroller")
+    propController: require("./propcontroller"),
+    // userController: require("./usercontroller")
 }
