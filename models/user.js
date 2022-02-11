@@ -16,7 +16,7 @@ const UserModel = db.define("user", {
         unique: true
     },
     password: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: false
     }
 })

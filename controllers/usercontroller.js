@@ -40,18 +40,18 @@ router.post("/login", async (req, res) => {
     try {
         let loginUser = await UserModel.findOne({
             where: {
-                email,
+                email: email
             }
         })
 
         if (loginUser) {
-            let passwordComparison = await bcrypt.compare(password);
+            let passwordComparison = await bcrypt.compare(password, loginUser.password);
 
             if (passwordComparison) {
                 let token = jwt.sign({ id: loginUser.id }, process.env.JWT_KEY, { expiresIn: 60 * 60 * 24 })
                 res.status(200).json({
-                    message: "Login successful",
                     user: loginUser,
+                    message: "Login successful",
                     sessionToken: token
                 })
             } else {
