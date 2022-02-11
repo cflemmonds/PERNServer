@@ -60,12 +60,12 @@ router.post("/login", async (req, res) => {
                 })
             }
         }
-        } catch (err) {
-            res.status(500).json({
-                message: "Failed to login",
-            })
-        }
+    } catch (err) {
+        res.status(500).json({
+            message: "Failed to login",
+        })
+    }
 
-    })
+})
 
 module.exports = router;
