@@ -2,19 +2,14 @@ const Express = require('express');
 const router = Express.Router();
 const { PropertyModel } = require("../models")
 
-router.get("/", async (req, res) => {
-    try {
+router.get("/get", async (req, res) => {
+    try{
         const allProperty = await PropertyModel.findAll()
-        console.log(allProperty)
-
         res.status(200).json(allProperty)
-
     } catch(err) {
-
         res.status(500).json({
-            error: err
+            error:err
         })
-
     }
 })
 
@@ -29,10 +24,8 @@ router.post("/create", async (req, res) => {
             serial: req.body.serial,
             imgURL: req.body.imgURL,
             value: req.body.value,
-            ownerID: req.body.ownerID
+            ownerID: req.user.id
         })
-
-        console.log(createProperty)
 
         res.status(201).json({
             message: "Property successfully created",
@@ -54,12 +47,11 @@ router.put("/:id", async (req, res) => {
         serial,
         imgURL,
         value,
-        ownerID
     } = req.body
 
     try {
         await PropertyModel.update(
-            { category, name, year, model, serial, imgURL, value, ownerID }, 
+            { category, name, year, model, serial, imgURL, value }, 
             { where: { id: req.params.id }, returning: true }
         )
         .then((result) => {
