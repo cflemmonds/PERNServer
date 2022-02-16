@@ -1,8 +1,11 @@
 const { DataTypes } = require("sequelize");
-const { unique } = require("underscore");
 const db = require("../db");
 
-const User = db.define("user", {
+const UserModel = db.define("user", {
+    // ownerId: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false
+    // },
     firstName: {
         type: DataTypes.STRING(1000),
         allowNull: false
@@ -12,14 +15,14 @@ const User = db.define("user", {
         allowNull: false
     },
     email: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: false,
         unique: true
     },
     password: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: false
     }
 })
 
-module.exports = User;
+module.exports = UserModel;

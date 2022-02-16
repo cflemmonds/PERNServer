@@ -1,18 +1,15 @@
+require('dotenv').config()
 const Express = require('express')
 const app = Express()
 const dbConnection = require("./db")
+app.use(require('./middleware/headers'));
 
-// app.use('/test', (req, res) => {
-//     res.send('This is message from the test endpoint on the server!')
-// })
+app.use(Express.json())
 
 const controllers = require("./controllers");
-
-app.use("/prop", controllers.propController)
-
-app.listen(4000, () => {
-    console.log(`[Server]: App is listening on 4000.`)
-})
+app.use("/user", controllers.userController)
+app.use(require("./middleware/validateSession"))
+app.use("/property", controllers.propertyController)
 
 dbConnection.authenticate()
     .then(() => dbConnection.sync())
