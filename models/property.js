@@ -19,7 +19,7 @@ const Property = db.define("property", {
         allowNull: false
     },
     serial: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false
     },
     imgURL: {
@@ -32,7 +32,7 @@ const Property = db.define("property", {
     },
     ownerID: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true,
     }
 })
 

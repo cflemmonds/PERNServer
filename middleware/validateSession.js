@@ -9,7 +9,7 @@ const validateSession = async (req, res, next) => {
             const { authorization } = req.headers
             const payload = authorization ? token.verify(authorization, process.env.JWT_KEY) : undefined
             if (payload) {
-                let foundUser = await User.findOne({
+                let foundUser = await UserModel.findOne({
                     where: {id: payload.id}
                 })
     

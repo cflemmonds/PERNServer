@@ -2,23 +2,23 @@ const router = require('express').Router();
 const { UserModel } = require("../models");
 const { UniqueConstraintError } = require("sequelize/lib/errors");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 
 router.post("/register", async (req, res) => {
 
     const { firstName, lastName, email, password } = req.body;
     try {
-        await UserModel.create({
+        const user = await UserModel.create({
             firstName,
             lastName,
             email,
             password: bcrypt.hashSync(password, 13)
         });
 
-        let token = jwt.sign({ id: UserModel.id }, process.env.JWT_KEY, { expiresIn: 60 * 60 * 24 })
+        let token = jwt.sign({ id: user.id }, process.env.JWT_KEY, { expiresIn: 60 * 60 * 24 })
         res.status(201).json({
             message: "User successfully registered",
-            user: UserModel,
+            user: "user", user,
             sessionToken: token
         })
     } catch (err) {
